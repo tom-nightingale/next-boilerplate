@@ -4,7 +4,7 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 export default function Home() {
 
