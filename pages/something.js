@@ -6,7 +6,7 @@ import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function Home() {
+export default function Something() {
 
   return (
 
@@ -25,22 +25,22 @@ export default function Home() {
 
         <Header />
 
-        <motion.div 
-          key="homepage"
+        <motion.div
+          key="something"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{duration: .25}}
         >
-          <p>Homepage</p>
+          <p>Something page</p>
         </motion.div>
 
         <Container>
 
-          <FancyLink destination="/something" a11yText="Aria Label" extraClasses="bg-red-500" label="Go to something page" />
+          <FancyLink destination="/" a11yText="Aria Label" extraClasses="bg-red-500" label="Go to the homepage" />
 
         </Container>
-
+        
         <Footer />
 
     </Layout>
