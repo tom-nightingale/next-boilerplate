@@ -37,7 +37,7 @@ export default function Home() {
 
         <Container>
 
-          <FancyLink destination="/something" a11yText="Aria Label" extraClasses="bg-red-500" label="Go to something page" />
+          <FancyLink destination="/" a11yText="Aria Label" extraClasses="bg-red-500" label="Go to something page" />
 
         </Container>
 
