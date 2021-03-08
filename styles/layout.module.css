@@ -1,0 +1,8 @@
+.container {
+    @apply px-0 py-4 mt-12 mx-auto mb-24;
+    max-width: 36rem;
+}
+
+.header {
+    @apply flex flex-col items-center;
+}
