@@ -2,11 +2,11 @@
 // https://tailwindcss.com/docs/using-with-preprocessors
 module.exports = {
   plugins: {
-    'tailwindcss': {},
-    'autoprefixer': {},
     'postcss-import': {},
-    'postcss-nested'': {
+    'tailwindcss': {},
+    'postcss-nested': {
       unwrap: ['screen'],
     },
+    'autoprefixer': {},
   },
 }

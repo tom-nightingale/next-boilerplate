@@ -2,19 +2,22 @@
 @tailwind base;
 @tailwind components;
 
+/* Default Typography Styles */
+/* @import '_typography.css'; */
+
 /* Tailwind Utilities */
 @tailwind utilities;
 
 
 /* Custom */
+html {
+  min-height: 101%;
+  scroll-behavior: smooth;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  line-height: 1.6;
-  font-size: 18px;
+  @apply font-sans antialiased leading-relaxed text-black
 }
 
 * {

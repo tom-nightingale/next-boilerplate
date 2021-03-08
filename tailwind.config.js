@@ -4,17 +4,6 @@ module.exports = {
       options: {
         safelist: [
             /^wp/,
-            /^ld-/,
-            "textarea",
-            "closed",
-            "open",        
-            'sub-menu',
-            "sub-arrow",
-            "show-arrow",
-            'mob-nav--active',
-            'mob-nav-underlay',
-            'mob-nav-close',
-            "current-page-ancestor"
         ],
     },
   },
@@ -32,7 +21,17 @@ module.exports = {
       "4xl": "1900px",
     },
     fontFamily: {
-      sans: ["Source Sans Pro", "sans-serif"],
+      sans: [
+        'Open Sans',
+        'sans-serif',
+      ],
+      serif: [
+        'Georgia',
+        'Cambria',
+        '"Times New Roman"',
+        'Times',
+        'serif',
+      ],
     },
     filter: {
       none: "none",
@@ -69,6 +68,7 @@ module.exports = {
       }),
       maxWidth: (theme) => ({
         ...theme("spacing"),
+        ...theme("screens"),
       }),
       minHeight: (theme) => ({
         ...theme("spacing"),
@@ -79,9 +79,11 @@ module.exports = {
     },
   },
   variants: {
+    opacity: ['responsive', 'group-hover', 'hover', 'focus', 'group-focus'],
     backgroundColor: ['responsive', 'group-hover', 'hover', 'focus', 'group-focus'],
     textColor: ['responsive', 'group-hover', 'hover', 'focus', 'group-focus'],
     padding: ['responsive', 'group-hover', 'hover', 'focus', 'group-focus'],
+    textDecoration: ['group-hover', 'hover', 'focus', 'group-focus'],
   },
   plugins: [
     require("tailwindcss-filters"),

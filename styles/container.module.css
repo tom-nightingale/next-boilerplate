@@ -1,0 +1,3 @@
+.container {
+    @apply w-full mx-auto text-4xl max-w-4xl bg-red-500;
+}

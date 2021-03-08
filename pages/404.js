@@ -1,7 +1,6 @@
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import Container from '../components/container'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -24,13 +23,9 @@ export default function Home() {
 
         <Header />
 
-        <Container>
+            <h1>Error 404.</h1>
 
-          <Link href="/something">
-            <a>A link to a second page</a>
-          </Link>
-
-        </Container>
+            <p>Well fuck something went wrong.</p>
 
         <Footer />
 

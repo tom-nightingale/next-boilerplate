@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.2.1",
     "autoprefixer": "^10.0.4",
     "classnames": "^2.2.6",
     "date-fns": "^2.18.0",
@@ -21,6 +20,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "tailwindcss": "^2.0.2",
-    "tailwindcss-filters": "^3.0.0"
+    "tailwindcss-filters": "^3.0.0",
+    "@tailwindcss/forms": "^0.2.1"
   }
 }

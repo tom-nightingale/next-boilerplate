@@ -1,0 +1,42 @@
+.content {
+  > p {
+    @apply mb-6 leading-relaxed;
+  }
+
+  a {
+    @apply inline-block text-primary;
+
+    &:hover {
+      @apply underline;
+    }
+  }
+
+  ol,
+  ul {
+    @apply pl-4 mb-8;
+
+    li {
+      @apply mb-2 leading-relaxed;
+    }
+  }
+
+  ul {
+    li {
+      @apply list-disc;
+    }
+  }
+
+  ol {
+    li {
+      @apply list-decimal;
+    }
+  }
+
+  blockquote {
+    @apply p-4 mb-8 bg-gray-100;
+  }
+}
+
+html {
+  background: blue;
+}
