@@ -13,7 +13,6 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.18.0",
     "framer-motion": "^3.10.0",
-    "gray-matter": "^4.0.2",
     "next": "10.0.8",
     "postcss": "^8.1.10",
     "postcss-import": "^14.0.0",
