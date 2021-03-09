@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { request } from "../../lib/datocms"
-import { responsiveImageFragment } from "../../lib/fragments"
+import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
 import Layout from '../../components/layout'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
@@ -56,9 +56,7 @@ const SINGLE_POST = `
   query Post($slug: String) {
     site: _site {
       faviconMetaTags {
-        attributes
-        content
-        tag
+        ...metaTagsFragment
       }
     }
     post(filter: {slug: {eq: $slug}}) {
@@ -78,6 +76,7 @@ const SINGLE_POST = `
         }
     }
   }
+  ${metaTagsFragment}
   ${responsiveImageFragment}
 `
 

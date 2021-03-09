@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { request } from "../lib/datocms";
+import { metaTagsFragment } from "../lib/fragments";
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -77,9 +78,7 @@ const HOMEPAGE_QUERY = `
   query HomePage {
     site: _site {
       faviconMetaTags {
-        attributes
-        content
-        tag
+        ...metaTagsFragment
       }
     }
     home {
@@ -104,6 +103,7 @@ const HOMEPAGE_QUERY = `
       slug
     }
   }
+  ${metaTagsFragment}
 `
 
 export async function getStaticProps() {
