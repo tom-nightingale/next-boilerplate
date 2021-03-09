@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { request } from "../../lib/datocms"
+import { responsiveImageFragment } from "../../lib/fragments"
 import Layout from '../../components/layout'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
@@ -28,6 +29,10 @@ export default function Post({ data: { site, post } }) {
             exit={{ opacity: 0 }}
             transition={{duration: .25}}
             >
+
+                {post.heroImage && 
+                  <Image className="w-40 h-40" data={post.heroImage.responsiveImage} />
+                }
 
                 <h1>{post.h1}</h1>
 
@@ -61,6 +66,11 @@ const SINGLE_POST = `
         postTitle
         slug
         content
+        heroImage {
+          responsiveImage(imgixParams: {fm: jpg, fit: crop, w: 900, h: 900 }) {
+            ...responsiveImageFragment
+          }
+        }
         seo: _seoMetaTags {
             attributes
             content
@@ -68,6 +78,7 @@ const SINGLE_POST = `
         }
     }
   }
+  ${responsiveImageFragment}
 `
 
 export async function getStaticProps({ params }) {
