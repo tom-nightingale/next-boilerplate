@@ -5,12 +5,18 @@ import Footer from '../components/footer'
 import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
+import { request } from "../lib/datocms";
 
-export default function Home() {
+export default function Home({ data: {home, site} }) {
 
   return (
 
     <Layout>
+
+
+       {JSON.stringify(home, null, 2)}
+
+       {JSON.stringify(site, null, 2)}
 
         <Head>
             <link rel="icon" href="/favicon.ico" />
@@ -46,4 +52,27 @@ export default function Home() {
     </Layout>
 
   )
+}
+
+const HOMEPAGE_QUERY = `
+  query HomePage {
+    site: _site {
+      faviconMetaTags {
+        attributes
+      }
+    }
+    home {
+      h1
+      content
+    }
+  }
+`
+
+export async function getStaticProps() {
+  const data = await request({
+    query: HOMEPAGE_QUERY
+  })
+  return {
+    props: { data }
+  }
 }
