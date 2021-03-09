@@ -23,7 +23,7 @@ export default function Page({ data: { site, page } }) {
         <Container>
 
             <motion.div 
-            key="homepage"
+            key={page.slug}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -23,7 +23,7 @@ export default function Post({ data: { site, post } }) {
         <Container>
 
             <motion.div 
-            key="homepage"
+            key={post.slug}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

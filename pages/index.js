@@ -24,7 +24,7 @@ export default function Home({ data: {home, site, posts, pages} }) {
         <Container>
 
           <motion.div 
-            key="homepage"
+            key={home.slug}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -84,6 +84,7 @@ const HOMEPAGE_QUERY = `
     home {
       h1
       content
+      slug
       seo: _seoMetaTags {
         attributes
         content
