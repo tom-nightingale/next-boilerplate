@@ -101,10 +101,6 @@ export async function getStaticProps({ params }) {
   const pageId = parseInt(params.id);
   const skip = pageId*postsPerPage-postsPerPage;
   
-  console.log("page: "+pageId);
-  console.log("skip: "+skip);
-
-  
   const data = await request({
     query: POSTS_PAGE,
     variables: {
@@ -136,7 +132,5 @@ export async function getStaticPaths() {
       };
     }),
     fallback: false,
-    // paths: data.allPosts.map((post) => `/posts/page/${post.id}`),
-    // fallback: false,
   };
 }
