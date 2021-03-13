@@ -14,6 +14,7 @@
     "date-fns": "^2.18.0",
     "framer-motion": "^3.10.0",
     "next": "10.0.8",
+    "next-pagination": "^2.1.1",
     "postcss": "^8.1.10",
     "postcss-import": "^14.0.0",
     "postcss-nested": "^5.0.3",

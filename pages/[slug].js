@@ -9,7 +9,7 @@ import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
-export default function Page({ data: { site, page } }) {
+export default function Page({ data: { site, page, allPages } }) {
   return (
 
    <Layout>
@@ -18,7 +18,7 @@ export default function Page({ data: { site, page } }) {
             {renderMetaTags(page.seo.concat(site.faviconMetaTags))} 
         </Head>
 
-        <Header />
+        <Header navItems={allPages}/>
 
         <Container>
 
@@ -66,6 +66,19 @@ const SINGLE_PAGE = `
             tag
         }
     }
+    allPages {
+      pageTitle
+      h1
+      content
+      slug
+      parent {
+        id
+      }
+      children {
+        pageTitle
+        slug
+      }
+    }
   }
   ${metaTagsFragment}
 `
@@ -92,6 +105,6 @@ export async function getStaticPaths() {
 
   return {
     paths: data.allPages.map((page) => `/${page.slug}`),
-    fallback: true,
+    fallback: false,
   };
 }

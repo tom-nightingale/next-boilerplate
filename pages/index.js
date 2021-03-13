@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { request } from "../lib/datocms";
-import { metaTagsFragment } from "../lib/fragments";
+import { metaTagsFragment } from "../lib/fragments"
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Footer from '../components/footer'
@@ -9,7 +9,7 @@ import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
-export default function Home({ data: {home, site, posts, pages} }) {
+export default function Home({ data: {home, site, allPosts, allPages} }) {
 
   return (
 
@@ -19,7 +19,7 @@ export default function Home({ data: {home, site, posts, pages} }) {
             {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
         </Head>
 
-        <Header />
+        <Header navItems={allPages}/>
 
         <Container>
 
@@ -38,7 +38,7 @@ export default function Home({ data: {home, site, posts, pages} }) {
             <h2>Posts:</h2>
 
             <ul className="flex flex-wrap">
-              {posts.map((post, i) => {
+              {allPosts.map((post, i) => {
                 return (
                   <li key={i} className="p-4 m-4 rounded-sm shadow">
                     <span className="block font-bold">{post.h1}</span>
@@ -52,7 +52,7 @@ export default function Home({ data: {home, site, posts, pages} }) {
             <h2>Pages:</h2>
 
             <ul className="flex flex-wrap">
-              {pages.map((page, i) => {
+              {allPages.map((page, i) => {
                 return (
                   <li key={i} className="p-4 m-4 rounded-sm shadow">
                     <span className="block font-bold">{page.h1}</span>
@@ -86,22 +86,27 @@ const HOMEPAGE_QUERY = `
       content
       slug
       seo: _seoMetaTags {
-        attributes
-        content
-        tag
+        ...metaTagsFragment
       }
     }
-    posts: allPosts {
+    allPosts {
       postTitle
       h1
       content
       slug
     }
-    pages: allPages {
+    allPages {
       pageTitle
       h1
       content
       slug
+      parent {
+        id
+      }
+      children {
+        pageTitle
+        slug
+      }
     }
   }
   ${metaTagsFragment}

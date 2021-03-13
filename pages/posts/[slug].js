@@ -9,7 +9,7 @@ import FancyLink from '../../components/fancyLink'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms";
 
-export default function Post({ data: { site, post } }) {
+export default function Post({ data: { site, post, allPages } }) {
   return (
 
    <Layout>
@@ -18,7 +18,7 @@ export default function Post({ data: { site, post } }) {
             {renderMetaTags(post.seo.concat(site.faviconMetaTags))} 
         </Head>
 
-        <Header />
+        <Header navItems={allPages} />
 
         <Container>
 
@@ -31,7 +31,7 @@ export default function Post({ data: { site, post } }) {
             >
 
                 {post.heroImage && 
-                  <Image className="w-40 h-40" data={post.heroImage.responsiveImage} />
+                  <Image className="w-40 h-40" width={100} height={100} pictureClassName="" data={post.heroImage.responsiveImage} />
                 }
 
                 <h1>{post.h1}</h1>
@@ -75,6 +75,19 @@ const SINGLE_POST = `
             tag
         }
     }
+    allPages {
+      pageTitle
+      h1
+      content
+      slug
+      parent {
+        id
+      }
+      children {
+        pageTitle
+        slug
+      }
+    }
   }
   ${metaTagsFragment}
   ${responsiveImageFragment}
@@ -102,6 +115,6 @@ export async function getStaticPaths() {
 
   return {
     paths: data.allPosts.map((post) => `/posts/${post.slug}`),
-    fallback: true,
+    fallback: false,
   };
 }

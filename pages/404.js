@@ -4,26 +4,22 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
+import { request } from "../lib/datocms";
 import { motion } from 'framer-motion'
+import { Image, renderMetaTags } from "react-datocms";
+import { metaTagsFragment } from "../lib/fragments"
 
-export default function ErrorPage() {
+export default function ErrorPage({ data: {home, site, allPages} }) {
 
   return (
 
     <Layout>
 
       <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <title>Nextjs boilerplate</title>
-          <meta
-          name="description"
-          content="nextJS boilerplate"
-          />
-          <meta name="og:title" content="Website Title" />
-          <meta name="twitter:card" content="summary_large_image" />
+          {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
       </Head>
 
-      <Header />
+      <Header navItems={allPages}/>
 
       <Container>
 
@@ -39,4 +35,45 @@ export default function ErrorPage() {
 
     </Layout>
   )
+}
+
+const HOMEPAGE_QUERY = `
+  query HomePage {
+    site: _site {
+      faviconMetaTags {
+        ...metaTagsFragment
+      }
+    }
+    home {
+      h1
+      content
+      slug
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
+    allPages {
+      pageTitle
+      h1
+      content
+      slug
+      parent {
+        id
+      }
+      children {
+        pageTitle
+        slug
+      }
+    }
+  }
+  ${metaTagsFragment}
+`
+
+export async function getStaticProps() {
+  const data = await request({
+    query: HOMEPAGE_QUERY
+  })
+  return {
+    props: { data }
+  }
 }
