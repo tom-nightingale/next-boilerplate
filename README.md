@@ -9,7 +9,7 @@ Standard [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packa
 -  **next-datocms**
 [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project designed to work with a headless [DatoCMS](https://www.datocms.com/) instance, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
 
--  **next-wordpress**
+-  **next-wordpress - Work in progress**
 [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project designed to work with headless [WordPress](https://wordpress.com/), [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
 
 -  **next-prismic - Work in progress**
