@@ -5,21 +5,22 @@ import Footer from '../components/footer'
 import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
 import { motion } from 'framer-motion'
+import { Client } from '../prismic-config'
 // import { request } from "../lib/datocms";
 // import { Image, renderMetaTags } from "react-datocms";
 // import { metaTagsFragment } from "../lib/fragments"
 
-export default function ErrorPage({ data: {home, site, allPages} }) {
+export default function ErrorPage({ doc }) {
 
   return (
 
     <Layout>
 
       <Head>
-          {renderMetaTags(home.seo.concat(site.faviconMetaTags))} 
+         <title>Something</title>
       </Head>
 
-      <Header navItems={allPages}/>
+      <Header />
 
       <Container>
 
@@ -37,43 +38,13 @@ export default function ErrorPage({ data: {home, site, allPages} }) {
   )
 }
 
-const HOMEPAGE_QUERY = `
-  query HomePage {
-    site: _site {
-      faviconMetaTags {
-        ...metaTagsFragment
-      }
-    }
-    home {
-      h1
-      content
-      slug
-      seo: _seoMetaTags {
-        ...metaTagsFragment
-      }
-    }
-    allPages {
-      pageTitle
-      h1
-      content
-      slug
-      parent {
-        id
-      }
-      children {
-        pageTitle
-        slug
-      }
-    }
-  }
-  ${metaTagsFragment}
-`
+export async function getStaticProps({params}) {
+  const client = Client();
+  const doc = await client.getSingle('home') || {}
 
-export async function getStaticProps() {
-  const data = await request({
-    query: HOMEPAGE_QUERY
-  })
   return {
-    props: { data }
+    props: {
+      doc,
+    },
   }
 }
