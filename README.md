@@ -7,13 +7,13 @@ The starter kit has several GIT branches.
 Standard [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project stripped back with [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included.
 
 -  **next-datocms**
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project integrated with [DatoCMS](https://www.datocms.com/) integrated, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project designed to work with a headless [DatoCMS](https://www.datocms.com/) instance, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
 
 -  **next-wordpress**
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project integrated with [WordPress](https://wordpress.com/) integrated, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project designed to work with headless [WordPress](https://wordpress.com/), [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included. 
 
 -  **next-prismic**
-[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project integrated with [Prismic](https://prismic.io/) integrated, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included.
+[`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) project designed to work with a headless [Prismic](https://prismic.io/) instance, [TailwindCSS](https://tailwindcss.com/) and [Framer Motion](https://www.framer.com/motion/) included.
 
 ## Learn More
 
