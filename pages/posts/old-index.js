@@ -1,15 +1,15 @@
 import Head from 'next/head'
-import { request } from "../../lib/datocms"
-import { metaTagsFragment } from "../../lib/fragments";
 import Layout from '../../components/layout'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Container from '../../components/container'
 import FancyLink from '../../components/fancyLink'
 import { motion } from 'framer-motion'
-import { Image, renderMetaTags } from "react-datocms"
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+// import { request } from "../../lib/datocms"
+// import { metaTagsFragment } from "../../lib/fragments";
+// import { Image, renderMetaTags } from "react-datocms"
 
 export default function Blog({ data: { site, blog, allPosts, allPages,} }) {
   

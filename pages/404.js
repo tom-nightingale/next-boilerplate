@@ -4,10 +4,10 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Container from '../components/container'
 import FancyLink from '../components/fancyLink'
-import { request } from "../lib/datocms";
 import { motion } from 'framer-motion'
-import { Image, renderMetaTags } from "react-datocms";
-import { metaTagsFragment } from "../lib/fragments"
+// import { request } from "../lib/datocms";
+// import { Image, renderMetaTags } from "react-datocms";
+// import { metaTagsFragment } from "../lib/fragments"
 
 export default function ErrorPage({ data: {home, site, allPages} }) {
 

@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import { request } from "../../lib/datocms"
-import { metaTagsFragment } from "../../lib/fragments";
 import Layout from '../../components/layout'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
@@ -8,7 +6,9 @@ import Container from '../../components/container'
 import FancyLink from '../../components/fancyLink'
 import Pagination from '../../components/pagination'
 import { motion } from 'framer-motion'
-import { Image, renderMetaTags } from "react-datocms"
+// import { request } from "../../lib/datocms"
+// import { metaTagsFragment } from "../../lib/fragments";
+// import { Image, renderMetaTags } from "react-datocms"
 import Link from 'next/link'
 
 export default function Posts({ data: { site, blog, pagedPosts, allPosts, allPages} }) {
