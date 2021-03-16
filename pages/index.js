@@ -19,14 +19,13 @@ export default function Home({ doc }) {
     <Layout>
 
         <Head>
-            <title>{RichText.asText(doc.data.h1)}</title>
+            <title>{doc.data.meta_title}</title>
+            <meta name="description" content={doc.data.meta_description} />
         </Head>
 
         <Header />
 
         <Container>
-
-          {JSON.stringify(doc)}
 
           <motion.div 
             key="something"
