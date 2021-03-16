@@ -6,17 +6,18 @@ import Header from '../../../components/header'
 import Footer from '../../../components/footer'
 import Container from '../../../components/container'
 import FancyLink from '../../../components/fancyLink'
+import Pagination from '../../../components/pagination'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms"
 
-export default function Posts({ data: { site, allPosts, allPages} }) {
+export default function Posts({ data: { site, blog, allPosts, pagedPosts, allPages}, currentPage, postsPerPage  }) {
 
   return (
 
    <Layout>
 
        <Head>
-            {/* {renderMetaTags(postsSingle.seo.concat(site.faviconMetaTags))}  */}
+            {renderMetaTags(blog.seo.concat(site.faviconMetaTags))} 
         </Head>
 
         <Header navItems={allPages} />
@@ -31,15 +32,11 @@ export default function Posts({ data: { site, allPosts, allPages} }) {
             transition={{duration: .25}}
             >
 
-                <h1>Paged</h1>
-
-                <div>
-                  Some content
-                </div>
+                <h1>Page {currentPage}</h1>
 
                 <ul className="flex flex-wrap">
 
-                  {allPosts.map((post, i) => {
+                  {pagedPosts.map((post, i) => {
                     return (
                       <li key={post.slug} className="p-4 m-4 rounded-sm shadow">
                         <span className="block font-bold">{post.h1}</span>
@@ -52,6 +49,13 @@ export default function Posts({ data: { site, allPosts, allPages} }) {
                 </ul>  
 
             </motion.div>
+
+            <Pagination
+              currentPage={currentPage}
+              postsPerPage={postsPerPage}
+              allPosts={allPosts}
+              pagedUrlBase="posts"
+            />
 
         </Container>
 
@@ -70,6 +74,13 @@ const POSTS_PAGE = `
         ...metaTagsFragment
       }
     }
+    blog {
+      h1
+      content
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
     allPages {
       pageTitle
       h1
@@ -83,44 +94,52 @@ const POSTS_PAGE = `
         slug
       }
     }
-    allPosts(first: $first, skip: $skip, orderBy: _firstPublishedAt_DESC) {
+    allPosts: allPosts {
       postTitle
       h1
       content
       slug
     }
+    pagedPosts: allPosts(first: $first, skip: $skip, orderBy: _firstPublishedAt_DESC) {
+      postTitle
+      h1
+      content
+      slug
+    }    
   }
   ${metaTagsFragment}
 `
 
-
-
 export async function getStaticProps({ params }) {
 
-  const postsPerPage = 2;
   const pageId = parseInt(params.id);
-  const skip = pageId*postsPerPage-postsPerPage;
+  const postsPerPage = 2;
+  const skip = pageId*postsPerPage-postsPerPage;  
   
   const data = await request({
     query: POSTS_PAGE,
     variables: {
         id: params.id,
         skip: skip,
-        first: postsPerPage,        
+        first: postsPerPage,
     }
   })
   return {
-    props: { data }
+    props: { 
+        data: data,
+        currentPage: pageId,
+        postsPerPage: postsPerPage,
+    },
   }
 }
 
-export async function getStaticPaths() {
 
+export async function getStaticPaths() {
   const data = await request({ 
-      query: `{ allPosts { slug id } }` 
+      query: `{ queryPosts: allPosts { slug id } }` 
   });
   const postsPerPage = 2;
-  const totalPosts = data.allPosts.length;
+  const totalPosts = data.queryPosts.length;
   const totalPages = Math.ceil(totalPosts/postsPerPage);
 
   return {

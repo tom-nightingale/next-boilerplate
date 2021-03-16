@@ -6,17 +6,23 @@ import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Container from '../../components/container'
 import FancyLink from '../../components/fancyLink'
+import Pagination from '../../components/pagination'
 import { motion } from 'framer-motion'
 import { Image, renderMetaTags } from "react-datocms"
+import Link from 'next/link'
 
-export default function Posts({ data: { site, allPosts, allPages} }) {
+export default function Posts({ data: { site, blog, pagedPosts, allPosts, allPages} }) {
+
+  // Set up variables to pass to Pagination
+  const currentPage = 1;
+  const postsPerPage = 2;
 
   return (
 
    <Layout>
 
        <Head>
-            {/* {renderMetaTags(postsSingle.seo.concat(site.faviconMetaTags))}  */}
+            {renderMetaTags(blog.seo.concat(site.faviconMetaTags))} 
         </Head>
 
         <Header navItems={allPages} />
@@ -31,15 +37,11 @@ export default function Posts({ data: { site, allPosts, allPages} }) {
             transition={{duration: .25}}
             >
 
-                <h1>Heading here</h1>
-
-                <div>
-                  Some content
-                </div>
+                <h1>Page 1 - archive</h1>
 
                 <ul className="flex flex-wrap">
 
-                  {allPosts.map((post, i) => {
+                  {pagedPosts.map((post, i) => {
                     return (
                       <li key={post.slug} className="p-4 m-4 rounded-sm shadow">
                         <span className="block font-bold">{post.h1}</span>
@@ -52,6 +54,14 @@ export default function Posts({ data: { site, allPosts, allPages} }) {
                 </ul>  
 
             </motion.div>
+
+            <Pagination
+              currentPage={currentPage}
+              postsPerPage={postsPerPage}
+              allPosts={allPosts}
+              archive
+              pagedUrlBase="posts"
+            />
 
         </Container>
 
@@ -70,6 +80,13 @@ const POSTS_PAGE = `
         ...metaTagsFragment
       }
     }
+    blog {
+      h1
+      content
+      seo: _seoMetaTags {
+        ...metaTagsFragment
+      }
+    }
     allPages {
       pageTitle
       h1
@@ -83,7 +100,11 @@ const POSTS_PAGE = `
         slug
       }
     }
-    allPosts(first: "2", orderBy: _firstPublishedAt_DESC) {
+    allPosts: allPosts {
+      id
+      slug
+    }
+    pagedPosts: allPosts(first: "2", orderBy: _firstPublishedAt_DESC) {
       postTitle
       h1
       content
@@ -92,8 +113,6 @@ const POSTS_PAGE = `
   }
   ${metaTagsFragment}
 `
-
-
 
 export async function getStaticProps() {
   const data = await request({
