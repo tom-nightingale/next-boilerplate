@@ -1,7 +1,12 @@
+# NextJS Boilerplate
+
+NextJS boilerplate based upon the [Shiftwalk Starter](https://github.com/samuelgoddard/next-tailwind-motion.git) and expanded with the following enhancements:
+- [Apollo Client](https://www.npmjs.com/package/@apollo/client) for GraphQL queries across any endpoint
+- [Typescript code generator](https://www.npmjs.com/package/@graphql-codegen/cli) to automatically generate Types from your endpoint
+- [Storybook](https://storybook.js.org/) Component library
+
 # Shiftwalk Starter
 Demo: [https://sg-next-tailwind-motion.vercel.app/](https://sg-next-tailwind-motion.vercel.app/)
-
-Locomotive Scroll Demo: [https://sg-next-tailwind-motion-locomotive.vercel.app/](https://sg-next-tailwind-motion-locomotive.vercel.app/)
 
 A simple [Next.js](https://nextjs.org/) boilerplate with [TailwindCSS](https://tailwindcss.com/) ([JIT](https://tailwindcss.com/docs/just-in-time-mode)), [Framer Motion](https://www.framer.com/motion/), and a few other nice bits preconfigured.
 
@@ -55,6 +60,12 @@ _*To remove Preact and switch back to React simply remove the code in `next.conf
     |-- footer.js *// Example footer component*
     |-- header.js *// Example header component*
     |-- layout.js *// Layout component that can be used to wrap your pages in a global layout*
+|-- gql
+    |-- apolloClient.js *// apollo graphQL client to query endpoint*
+    |-- queries.js *// singular graphQL query file*
+    |-- gen
+        |--codegen.ts *// automatically generated types from graphQL endpoint (after running `npm run codegen`)*
+        |-- schema.json *// automatically generated schema from graphQL endpoint (after running `npm run codegen`)
 |-- helpers
     |-- seo.config.js *// default SEO configuration helper, imported in `pages/_app.js`*
     |-- transitions.js *// re-usable framer motion transition helper with a basic 'fade' transition to get started*
@@ -69,7 +80,7 @@ _*To remove Preact and switch back to React simply remove the code in `next.conf
     |-- _typography.css *// custom typographical styles*
     |-- main.css *// Tailwind init and custom css imports*
 |-- .gitignore
-|-- jsconfig.json *// module aliasing*
+|-- tsconfig.json *// module aliasing & typescript options*
 |-- postcss.config.js *// Tailwind, CSS import, CSS nesting init*
 |-- next.config.js *// Prefer Preact to React*
 |-- package.json

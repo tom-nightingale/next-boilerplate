@@ -26,7 +26,7 @@
     "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "codegen": "graphql-codegen --config codegen.example.yml"
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "@apollo/client": "^3.6.10",
