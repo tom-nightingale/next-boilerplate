@@ -18,5 +18,5 @@ html {
 }
 
 body {
-  @apply font-sans antialiased text-black bg-white;
+  @apply font-sans antialiased text-black bg-white dark:bg-black;
 }

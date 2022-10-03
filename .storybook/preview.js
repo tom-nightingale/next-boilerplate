@@ -1,3 +1,6 @@
+import '../styles/main.css';
+import '../styles/storybook.css';
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

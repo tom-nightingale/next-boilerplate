@@ -1,5 +1,5 @@
-import FancyLink from '@/components/fancyLink'
-import Container from '@/components/container'
+import FancyLink from '@/components/_shared/FancyLink/FancyLink'
+import Container from '@/components/_shared/Container/Container'
 
 export default function Header() {
   return (
