@@ -8,13 +8,12 @@ import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import client from "@/gql/apolloClient";
 
-import {getHomeQuery} from "@/gql/queries"
-import type {GetHomeQuery, Home} from '@/gql/gen/codegen';
+// import {getHomeQuery} from "@/gql/queries"
+// import type {GetHomeQuery, Home} from '@/gql/gen/codegen';
 
 export default function Home({home}) {
-  const pageData : Home = home.data.allHome[0];
+  // const pageData : Home = home.data.allHome[0];
   
-  console.log(pageData);
   return (
     <Layout>
       <NextSeo title="Home" />
@@ -48,15 +47,14 @@ export default function Home({home}) {
   )
 }
 
-export async function getStaticProps() {
-  // const home = await sanity.fetch(GetHomeQuery);
-  const home = await client.query<GetHomeQuery>({
-    query: getHomeQuery,
-  });
+// export async function getStaticProps() {
+//   const home = await client.query<GetHomeQuery>({
+//     query: getHomeQuery,
+//   });
 
-  return {
-    props: {
-      home
-    }
-  }
-}
+//   return {
+//     props: {
+//       home
+//     }
+//   }
+// }

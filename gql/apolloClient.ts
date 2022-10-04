@@ -7,7 +7,7 @@ import {
 import fetch from "cross-fetch";
 import { onError } from "@apollo/client/link/error/";
 
-const ENDPOINT = `https://rnvdwhvc.api.sanity.io/v1/graphql/production/default`;
+const ENDPOINT = `ENDPOINT_URL`;
 
 const httpLink = createHttpLink({
   uri: ENDPOINT,
