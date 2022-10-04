@@ -1,5 +1,5 @@
-import React from 'react';
 import FancyLink from './FancyLink';
+import defineArgs from '../Storybook/ArgTypes';
 
 export default {
     title: 'Components/FancyLink',
@@ -12,34 +12,10 @@ export default {
         },
     },
     argTypes: {
-        destination: {
-            control: "text",
-            description: "Where should this link go to?",
-            table: {
-                type: { summary: 'string' },
-            },
-        },
-        a11yText: {
-            control: "text",
-            description: "Accessibility text",
-            table: {
-                type: { summary: 'string' },
-            },
-        },
-        label: {
-            control: "text",
-            description: "Label of the link",
-            table: {
-                type: { summary: 'string' },
-            },
-        },
-        extraClasses: {
-            control: "text",
-            description: "Space-separated tailwind classes",
-            table: {
-                type: { summary: 'string' },
-            },
-        },
+        destination: defineArgs("text", "where should this link go to?", "string"),
+        a11yText: defineArgs("text", "Accessibility helper text", "string"),
+        label: defineArgs("text", "Text to go within the button", "string"),
+        extraClasses: defineArgs("text", "Space separated TailwindCSS classes", "string"),
     }
 }
 
