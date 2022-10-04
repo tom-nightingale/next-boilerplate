@@ -15,7 +15,7 @@ export default {
 
 const Template = (args) => (
     <Container>
-        <div className="w-full min-h-screen bg-gray-100">
+        <div className="w-full bg-gray-100 min-h-[25vh]">
             This should show the container.
         </div>
     </Container>
